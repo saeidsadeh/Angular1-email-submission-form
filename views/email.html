@@ -1,0 +1,22 @@
+<form name="myForm" style="max-width: 50%">
+    <div class="form-group" >
+        <label for="emailContact">email contact:</label><input class="form-control" id="emailContact" type="email" name="input" ng-model="email.address" required>
+        <span class="error" ng-show="submitted && myForm.input.$error.required">Email Required!</span>
+        <span class="error" ng-show="submitted && myForm.input.$error.email">
+    Not valid email!</span>
+        <br>
+    </div>
+    <div class="form-group">
+        <label for="subject">subject:</label> <input class="form-control" id="subject"type="text" name="subject" ng-model="email.subject" required>
+        <span class="error" ng-show="submitted && myForm.subject.$error.required">Subjct Required!</span>
+    </div>
+    <div class="form-group">
+        <label for="message">message body:</label> <textarea name="body" class="form-control" id="message" rows="4" cols="50" ng-model="email.body" required ng-minlength="4" ng-maxlength="255"></textarea>
+        <span class="error" ng-show="submitted && myForm.body.$error.required">body Required!</span>
+        <span class="error" ng-show="submitted && myForm.body.$error.minlength">min length of 4 character!</span>
+        <span class="error" ng-show="submitted && myForm.body.$error.maxlength">max length of 255 character!</span>
+
+    </div>
+    <button class="btn btn-primary btn-block" name="submitbtn" value="submit" ng-click="submit(myForm.$valid)">Submit Email</button><br>
+<span style="color:green" ng-show="successfulMsg">we succesfully sent an email to {{email.address}}</span>
+</form>
